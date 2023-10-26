@@ -841,7 +841,9 @@ if(EVENT__HAVE_EVENT_PORTS)
 endif()
 
 if (NOT EVENT__DISABLE_OPENSSL)
-    find_package(OpenSSL REQUIRED)
+    if (NOT OPENSSL_LIBRARIES)
+        find_package(OpenSSL REQUIRED)
+    endif()
 
     set(EVENT__HAVE_OPENSSL 1)
 
